@@ -1,0 +1,63 @@
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2010-01-11 12:12:18) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed in 12ms (View: 2, DB: 0) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-11 12:14:17) [GET]
+
+ActionController::RoutingError (No route matches "/pages/index" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-11 12:14:19) [GET]
+
+ActionController::RoutingError (No route matches "/pages/index.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-11 12:14:43) [GET]
+
+ActionController::RoutingError (No route matches "/pages/index.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-01-11 12:16:02) [GET]
+Rendering pages/index
+Completed in 7ms (View: 6, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-11 12:16:07) [GET]
+
+ActionController::RoutingError (No route matches "/pages/index.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-01-11 12:16:14) [GET]
+Rendering pages/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/pages]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-11 12:16:19) [GET]
+
+ActionController::RoutingError (No route matches "/pages/index.html" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-01-11 12:16:28) [GET]
+Rendering pages/index
+Completed in 2ms (View: 1, DB: 0) | 200 OK [http://localhost/]
