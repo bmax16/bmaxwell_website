@@ -1,5 +1,5 @@
 <% if @images %>
-  <% hidden_div_if(@images.count < 2, :id => "navigation", :class => "span-1") do %>
+  <% hidden_div_if(@images[1].nil?, :id => "navigation", :class => "span-1") do %>
     <%= link_to_remote "prev", :update => 'content',
       :url => { :action => 'prev_image' } -%>
     &bull;
