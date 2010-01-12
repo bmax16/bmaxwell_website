@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title><%= title ||= "BMAX" %></title>
+    <title>Brittany Maxwell</title>
     <%= render 'layouts/stylesheets' %>
   </head>
   <body>
@@ -11,12 +11,7 @@
         <%= render 'layouts/header' %>
         <hr style="height:0.5em"/>
       </div>
-      <div id="content" class="span-16">
-        <%= yield %>
-      </div>
-      <div id="navigation" class="span-8 last">
-        <h3> Navigation </h3>
-      </div>
+      <%= yield :layout %>
     </div>
   </body>
 </html>

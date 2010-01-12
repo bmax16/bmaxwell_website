@@ -1,0 +1,5 @@
+<h1><%= content.title %></h1>
+<% @images.each do |image| %>
+  <h3><%= image_tag image %></h3>
+<% end %>
+<p><%= content.description %></p>

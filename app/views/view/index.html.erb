@@ -1,0 +1,10 @@
+<div class="span-20">
+  <%= render(:partial => 'content', :object => @current_page) %>
+</div>
+<div class="span-4 last">
+  <h2>Navigation</h2>
+  <% @pages.each do |page| %>
+    <%= link_to page.title, :action => 'change_page', :id => page -%>
+    <br/>
+  <% end %>
+</div>
