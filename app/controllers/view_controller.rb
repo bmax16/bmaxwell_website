@@ -2,6 +2,7 @@ class ViewController < ApplicationController
   ROOT = "#{RAILS_ROOT}/public"
 
   def index
+    session_clear unless params[:id]
     @content = (session[:content] ||= Page.default)
     @images = (session[:images] ||= get_all_images(@content.image_folder))
     @current_image = @images.first
@@ -15,7 +16,7 @@ class ViewController < ApplicationController
     if request.xhr?
       render :partial => 'content', :layout => false
     else
-      redirect_to :action => 'index'
+      redirect_to :action => 'index', :id => @content.id
     end
   end
 
@@ -28,7 +29,7 @@ class ViewController < ApplicationController
     if request.xhr?
       render :partial => 'content', :layout => false
     else
-      redirect_to :action => 'index'
+      redirect_to :action => 'index', :id => @content.id
     end
   end
 
@@ -41,7 +42,7 @@ class ViewController < ApplicationController
     if request.xhr?
       render :partial => 'content', :layout => false
     else
-      redirect_to :action => 'index'
+      redirect_to :action => 'index', :id => @content.id
     end
   end
 
@@ -57,6 +58,15 @@ private
     @current_image = session[:current_image]
     @images = session[:images]
   end
+
+  def session_clear
+    session[:content] = nil
+    session[:images] = nil
+    #session.each do |s|
+    #  s = nil
+    #end
+  end
+
   def authorize
   end
 end

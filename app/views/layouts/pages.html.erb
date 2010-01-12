@@ -9,7 +9,7 @@
   <body>
     <div class="container showgrid">
       <div class="span-8" id ="header">
-        <%= image_tag "header/header2.jpg" %>
+        <%= link_to image_tag("header/header2.jpg", :alt => "b.max"), root_url -%>
       </div>
       <%= yield :layout %>
     </div>

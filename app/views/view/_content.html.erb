@@ -1,13 +1,13 @@
-<% if @images %>
-  <% hidden_div_if(@images[1].nil?, :id => "navigation", :class => "span-1") do %>
+<div class="span-1" id="navigation">
+  <% if @images[1] %>
     <%= link_to_remote "prev", :update => 'content',
       :url => { :action => 'prev_image' } -%>
     &bull;
     <%= link_to_remote "next", :update => 'content',
       :url => { :action => 'next_image' } -%>
-  <% end %> 
+  <% end %>
   <br/>
-<% end %>
+</div>
 <% if @current_image %>
   <%= image_tag @current_image, :id => "contentimage", :class => "span-5" %>
 <% end %>
