@@ -57,4 +57,6 @@ private
     @current_image = session[:current_image]
     @images = session[:images]
   end
+  def authorize
+  end
 end

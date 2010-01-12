@@ -1,13 +1,17 @@
 <% if @images %>
-  <% hidden_div_if(@images.count < 2, :id => "cart") do %>
-    <%= link_to_remote "Previous", :update => 'content',
+  <% hidden_div_if(@images.count < 2, :id => "navigation", :class => "span-1") do %>
+    <%= link_to_remote "prev", :update => 'content',
       :url => { :action => 'prev_image' } -%>
-    <%= link_to_remote "Next", :update => 'content',
+    &bull;
+    <%= link_to_remote "next", :update => 'content',
       :url => { :action => 'next_image' } -%>
   <% end %> 
+  <br/>
 <% end %>
 <% if @current_image %>
-  <%= image_tag @current_image %>
+  <%= image_tag @current_image, :id => "contentimage", :class => "span-5" %>
 <% end %>
-<h3><%= content.title %></h3>
-<p><%= content.description %></p>
+<div id="contenttext" class="span-5">
+  <h6><%= content.title -%></h6>
+  <%= content.description -%>
+</div>

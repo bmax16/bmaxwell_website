@@ -7,11 +7,9 @@
     <%= javascript_include_tag :defaults %>
   </head>
   <body>
-    <div class="container">
-      <div style="border-bottom: 2px dotted" class="span-24 last">
-        <div id="header" >
-          <h1>Brittany Maxwell</h1>
-        </div>
+    <div class="container showgrid">
+      <div class="span-8" id ="header">
+        <%= image_tag "header/header2.jpg" %>
       </div>
       <%= yield :layout %>
     </div>

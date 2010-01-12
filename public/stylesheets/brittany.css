@@ -1,0 +1,29 @@
+/*
+
+	Note: 1.5em = 1 baseline
+	
+	look at this for setting up your baseline in css
+	http://www.elliotswan.com/2008/02/15/blueprint-css-how-to-customizing-typography-baselines/
+	
+	- James
+*/
+
+#header {
+	margin-bottom:1.92em;
+}
+
+#navigation{
+	margin-bottom:.4em;
+}
+
+#contentimage {
+	background:#AAA;
+	height:36em;
+	margin-bottom:1em;
+}
+
+#sidebartitle {
+	margin-top:.8em;
+	border-bottom:4px dotted;
+	margin-bottom: 1em;
+}

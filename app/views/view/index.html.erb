@@ -1,14 +1,15 @@
-<div class="span-18">
-  <div id="content">
-    <%= render(:partial => 'content', :object => @content) %>
-  </div>
+<div id="content" class="prepend-1 span-5">
+  <%= render(:partial => 'content', :object => @content) %>
 </div>
-<div class="span-6 last">
-  <h2>Navigation</h2>
-  <% @pages.each do |page| %>
-    <%= link_to_remote page.title, :update => 'content',
-      :url => { :action => 'change_page', :id => page.id } %>
-    <br/>
-  <% end %>
-
+<div id="sidebar" class="span-2 last" style="float:right">
+  <div id="sidebartitle" class="span-2 last">
+    <h2>work</h2>
+  </div>
+  <div id="sidebarcontent" class="span-2 last">
+    <% @pages.each do |page| %>
+      <%= link_to_remote page.title, :update => 'content',
+        :url => { :action => 'change_page', :id => page.id } -%>
+      <br/>
+    <% end %>
+  </div>
 </div>
