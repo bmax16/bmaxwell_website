@@ -9,11 +9,11 @@
 */
 
 #header {
-	margin-bottom:1.92em;
+	margin-bottom:1em;
 }
 
 #navigation{
-	margin-bottom:.4em;
+	margin-bottom:.6em;
 }
 
 #contentimage {
@@ -23,7 +23,7 @@
 }
 
 #sidebartitle {
-	margin-top:.8em;
+	margin-top:1em;
 	border-bottom:4px dotted;
 	margin-bottom: 1em;
 }
