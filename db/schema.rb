@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100111234130) do
+ActiveRecord::Schema.define(:version => 20100112070940) do
 
   create_table "pages", :force => true do |t|
     t.string   "title",        :limit => 40
@@ -29,5 +29,13 @@ ActiveRecord::Schema.define(:version => 20100111234130) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "hashed_password"
+    t.string   "salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
