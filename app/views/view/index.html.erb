@@ -1,10 +1,14 @@
-<div class="span-20">
-  <%= render(:partial => 'content', :object => @current_page) %>
+<div class="span-18">
+  <div id="content">
+    <%= render(:partial => 'content', :object => @content) %>
+  </div>
 </div>
-<div class="span-4 last">
+<div class="span-6 last">
   <h2>Navigation</h2>
   <% @pages.each do |page| %>
-    <%= link_to page.title, :action => 'change_page', :id => page -%>
+    <%= link_to_remote page.title, :update => 'content',
+      :url => { :action => 'change_page', :id => page.id } %>
     <br/>
   <% end %>
+
 </div>

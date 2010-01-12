@@ -1,0 +1,5 @@
+<%= link_to page.title, :action => 'change_page', :id => page.id -%>
+
+<% if @current_image %>
+  <%= image_tag @current_image %>
+<% end %>

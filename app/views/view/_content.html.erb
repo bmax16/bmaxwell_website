@@ -1,5 +1,13 @@
-<h1><%= content.title %></h1>
-<% @images.each do |image| %>
-  <h3><%= image_tag image %></h3>
+<% if @images %>
+  <% hidden_div_if(@images.count < 2, :id => "cart") do %>
+    <%= link_to_remote "Previous", :update => 'content',
+      :url => { :action => 'prev_image' } -%>
+    <%= link_to_remote "Next", :update => 'content',
+      :url => { :action => 'next_image' } -%>
+  <% end %> 
 <% end %>
+<% if @current_image %>
+  <%= image_tag @current_image %>
+<% end %>
+<h3><%= content.title %></h3>
 <p><%= content.description %></p>
