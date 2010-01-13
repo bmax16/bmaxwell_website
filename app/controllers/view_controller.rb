@@ -20,7 +20,7 @@ class ViewController < ApplicationController
       end
       @display_nav = false
     end
-    @pages = Page.find(:all)
+    @pages = Page.find(:all, :order => 'created_at').reverse
   end
 
   def change_page
@@ -64,6 +64,9 @@ class ViewController < ApplicationController
     images = Dir.glob(ROOT + "/images/" + folder + "/*.{jpg,png,gif}")
     images.each {|image| image.gsub!(ROOT, '') }
     images
+  end
+  
+  def construction
   end
 
 private

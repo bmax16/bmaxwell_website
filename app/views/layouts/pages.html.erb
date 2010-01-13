@@ -7,9 +7,14 @@
     <%= javascript_include_tag :defaults %>
   </head>
   <body>
-    <div class="container showgrid">
+    <div class="container">
       <div class="span-8" id ="header">
         <%= link_to image_tag("header/header2.jpg", :alt => "b.max"), root_url -%>
+      </div>
+      <div class="prepend-6 span-2 last" id ="info">
+        <%= mail_to("me@brittanymaxwell.com", image_tag("info/contact.jpg", :alt => "contact")) -%>
+        <%= image_tag("info/dot.jpg", :alt => "*") -%>
+        <%= link_to(image_tag("info/resume.jpg", :alt => "resume"), "pdfs/bmaxwell_resume.pdf") -%>
       </div>
       <%= yield :layout %>
     </div>

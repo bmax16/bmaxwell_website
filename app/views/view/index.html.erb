@@ -5,6 +5,9 @@
   <div id="sidebartitle" class="span-2 last">
     <h2>work</h2>
   </div>
+  <div id="sidebarline" class="span-2 last">
+    <%= image_tag "break/line.jpg", :alt => "......." -%>
+  </div>
   <div id="sidebarcontent" class="span-2 last">
     <% @pages.each do |page| %>
       <%= link_to_remote page.title, 
