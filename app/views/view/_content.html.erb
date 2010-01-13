@@ -1,5 +1,5 @@
 <div class="span-1" id="navigation">
-  <% if @images[1] %>
+  <% if @display_nav %>
     <%= link_to_remote "prev", :update => 'content',
       :url => { :action => 'prev_image' } -%>
     &bull;
@@ -9,7 +9,9 @@
   <br/>
 </div>
 <% if @current_image %>
-  <%= image_tag @current_image, :id => "contentimage", :class => "span-5" %>
+  <%= link_to_remote image_tag(@current_image),
+    :update => 'content',
+    :url => { :action => 'change_page', :id => content.id } -%>
 <% end %>
 <div id="contenttext" class="span-5">
   <h6><%= content.title -%></h6>

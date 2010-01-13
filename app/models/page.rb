@@ -5,9 +5,11 @@ class Page < ActiveRecord::Base
   def self.default
     self.new(
       :title => "Welcome", 
-      :description => "Welcome to my web page! Please explore and click on the links to the right.",
-      :image_folder => "//",
-      :postdate => nil
+      :description => "<p>Welcome to my web page! Please explore and click on the links to the right.</p>",
+      :image_folder => "//"
     )
+  end
+  def self.random
+    Page.find(:all).shuffle.first
   end
 end
