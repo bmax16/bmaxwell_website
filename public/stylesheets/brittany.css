@@ -24,6 +24,13 @@
 
 #sidebartitle {
 	margin-top:1em;
-	border-bottom:4px dotted;
 	margin-bottom: 1em;
 }
+
+#sidebar a:link {color:#000000; text-decoration: none;}    /* unvisited link */
+#sidebar a:visited {color:#0000FF} /* visited link */
+#sidebar a:hover {color:#00CCCC; text-decoration: none;}   /* mouse over link */
+#sidebar a:active {color:#000000; text-decoration: none;}  /* selected link */
+
+#navigation a:link {color:#000000; text-decoration: none;}
+#navigation a:hover {color:	#484848; text-decoration: none;}
