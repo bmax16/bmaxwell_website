@@ -5,7 +5,7 @@ class Page < ActiveRecord::Base
   def self.default
     self.new(
       :title => "Welcome", 
-      :description => "<p>Welcome to my web page! Please explore and click on the links to the right.</p>",
+      :description => "<p>This is the portfolio of Brittany Maxwell. Please explore.</p>",
       :image_folder => "//"
     )
   end

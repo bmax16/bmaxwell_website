@@ -7,8 +7,10 @@
   </div>
   <div id="sidebarcontent" class="span-2 last">
     <% @pages.each do |page| %>
-      <%= link_to_remote page.title, :update => 'content',
-        :url => { :action => 'change_page', :id => page.id } -%>
+      <%= link_to_remote page.title, 
+        {:update => 'content',
+          :url => { :action => 'change_page', :id => page.id }},
+        :href => url_for(:action => 'change_page', :id => page.id) -%>
       <br/>
     <% end %>
   </div>

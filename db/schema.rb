@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(:version => 20100112070940) do
     t.string   "image_folder", :limit => 40
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.time     "postdate"
   end
 
   create_table "sessions", :force => true do |t|
