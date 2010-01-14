@@ -1,6 +1,10 @@
 class Page < ActiveRecord::Base
+  ROOT = "#{RAILS_ROOT}/public"
+
   validates_presence_of :title, :description
   validates_uniqueness_of :title
+
+  attr_accessor :image, :image_array
 
   def self.default
     self.new(
@@ -9,7 +13,29 @@ class Page < ActiveRecord::Base
       :image_folder => "//"
     )
   end
+
   def self.random
-    Page.find(:all).shuffle.first
+    Page.all.shuffle.first
+  end
+
+  def get_all_images
+    @image_array = Dir.glob(ROOT + "/images/" + self.image_folder + "/*.{jpg,png,gif}")
+    @image_array.each {|image| image.gsub!(ROOT, '') }
+  end
+
+  def get_random_image
+    @image = self.get_all_images.shuffle.first
+  end
+
+  def get_next_image
+    index = @image_array.index(@image) + 1
+    index = (index >= @image_array.length ? 0 : index ) 
+    @image = @image_array[index]
+  end
+
+  def get_prev_image
+    index = @image_array.index(@image) - 1
+    index = (index < 0 ? @image_array.length - 1 : index ) 
+    @image = @image_array[index]
   end
 end

@@ -1,33 +1,28 @@
 class ViewController < ApplicationController
-  ROOT = "#{RAILS_ROOT}/public"
 
   def index
     if params[:id]
-      @images = (session[:images] ||= get_all_images(@content.image_folder))
-      @content = (session[:content] ||= Page.default)
-      @current_image = @images.first
-      @display_nav = true if @images[1]
+      @content = find_content
+      @display_nav = true if @content.image_array[1]
     else
-      session_clear
       @content = Page.default
-      until @current_image
-        page = Page.random
-        if page
-          @content.id = page.id
-          @images = get_all_images(page.image_folder).shuffle.first
-          @current_image = @images
-        end
+      until @content.image
+        @content = Page.random
+        @content.image = @content.get_random_image
       end
+      @content.title = Page.default.title
+      @content.description = Page.default.description
       @display_nav = false
     end
     @pages = Page.find(:all, :order => 'created_at').reverse
   end
 
   def change_page
-    session[:content] = Page.find(params[:id])
-    @content = (session[:content] ||= Page.default)
-    set_session_images get_all_images(@content.image_folder)
+    change_content params[:id]
+    @content = find_content
+    @content.image = @content.get_all_images.first
     if request.xhr?
+      @display_nav = true if @content.image_array[1]
       render :partial => 'content', :layout => false
     else
       redirect_to :action => 'index', :id => @content.id
@@ -35,12 +30,10 @@ class ViewController < ApplicationController
   end
 
   def next_image
-    @content = (session[:content] ||= Page.default)
-    @images = session[:images]
-    i = @images.shift
-    @images << i
-    set_session_images @images
+    @content = find_content
+    @content.image = @content.get_next_image
     if request.xhr?
+      @display_nav = true if @content.image_array[1]
       render :partial => 'content', :layout => false
     else
       redirect_to :action => 'index', :id => @content.id
@@ -48,41 +41,33 @@ class ViewController < ApplicationController
   end
 
   def prev_image 
-    @content = (session[:content] ||= Page.default)
-    @images = session[:images]
-    i = @images.pop
-    @images.unshift i
-    set_session_images @images
+    @content = find_content
+    @content.image = @content.get_prev_image
     if request.xhr?
+      @display_nav = true if @content.image_array[1]
       render :partial => 'content', :layout => false
     else
       redirect_to :action => 'index', :id => @content.id
     end
   end
-
-  def get_all_images folder
-    images = Dir.glob(ROOT + "/images/" + folder + "/*.{jpg,png,gif}")
-    images.each {|image| image.gsub!(ROOT, '') }
-    images
-  end
   
   def construction
   end
 
-private
-  def set_session_images images
-    session[:current_image] = images.first
-    session[:images] = images
-    @current_image = session[:current_image]
-    @images = session[:images]
-    @display_nav = true if @images[1]
-  end
-
-  def session_clear
-    session[:content] = nil
-    session[:images] = nil
-  end
-
+protected
   def authorize
   end
+
+  def find_content
+    @content = (session[:content] ||= Page.default)
+  end
+
+  def change_content id
+    session[:content] = Page.find(id)
+  rescue ActiveRecord::RecordNotFound
+    logger.error("Attempt to access invalid page #{params[:id]}" )
+    flash[:notice] = "Invalid page"
+    redirect_to :action => 'index'
+  end
+
 end

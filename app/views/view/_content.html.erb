@@ -8,10 +8,16 @@
   <% end %>
   <br/>
 </div>
-<% if @current_image %>
-  <%= link_to_remote image_tag(@current_image),
-    :update => 'content',
-    :url => { :action => 'change_page', :id => content.id } -%>
+<% if content.image %>
+  <% if @display_nav %>
+    <%= link_to_remote image_tag(content.image),
+      :update => 'content',
+      :url => { :action => 'next_image' } %>
+  <% else %>
+    <%= link_to_remote image_tag(content.image),
+      :update => 'content',
+      :url => { :action => 'change_page', :id => content.id } %>
+  <% end %>
 <% end %>
 <div id="contenttext" class="span-5">
   <h6><%= content.title -%></h6>
