@@ -21,33 +21,39 @@ class ViewController < ApplicationController
     change_content params[:id]
     @content = find_content
     @content.image = @content.get_all_images.first
+    @display_nav = true if @content.image_array[1]
     if request.xhr?
-      @display_nav = true if @content.image_array[1]
-      render :partial => 'content', :layout => false
+      render :update do |page|
+        page.replace_html("content" , :partial => "content" , :object => @content)
+      end
     else
-      redirect_to :action => 'index', :id => @content.id
+      format.html { redirect_to :action => 'index', :id => @content.id }
     end
   end
 
   def next_image
     @content = find_content
     @content.image = @content.get_next_image
+    @display_nav = true if @content.image_array[1]
     if request.xhr?
-      @display_nav = true if @content.image_array[1]
-      render :partial => 'content', :layout => false
+      render :update do |page|
+        page.replace_html("content" , :partial => "content" , :object => @content)
+      end
     else
-      redirect_to :action => 'index', :id => @content.id
+      format.html { redirect_to :action => 'index', :id => @content.id }
     end
   end
 
   def prev_image 
     @content = find_content
     @content.image = @content.get_prev_image
+    @display_nav = true if @content.image_array[1]
     if request.xhr?
-      @display_nav = true if @content.image_array[1]
-      render :partial => 'content', :layout => false
+      render :update do |page|
+        page.replace_html("content" , :partial => "content" , :object => @content)
+      end
     else
-      redirect_to :action => 'index', :id => @content.id
+      format.html { redirect_to :action => 'index', :id => @content.id }
     end
   end
   
