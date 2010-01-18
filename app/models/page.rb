@@ -19,8 +19,10 @@ class Page < ActiveRecord::Base
   end
 
   def get_all_images
-    @image_array = Dir.glob(ROOT + "/images/" + self.image_folder + "/*.{jpg,png,gif}")
+    @image_array = Dir.glob(ROOT + "/images/" + self.image_folder + "/*.{jpg,png,gif}").sort
     @image_array.each {|image| image.gsub!(ROOT, '') }
+    @image = @image_array.first
+    @image_array
   end
 
   def get_random_image
