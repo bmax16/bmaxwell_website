@@ -7,6 +7,9 @@
 	
 	- James
 */
+body {
+	letter-spacing:0.03em;
+}
 
 #header {
 	height:63px;
@@ -23,14 +26,19 @@
 }
 
 #sidebartitle {
-	margin-top:0.8em;
+	margin-top:1em;
 	margin-bottom:-1.1em;
+	color:#00CCCC;
+}
+
+#sidebartitle h2 {
+	color:#808080;
 }
 
 #sidebar a:link {color:#000000; text-decoration: none;}    /* unvisited link */
 #sidebar a:visited {color:#0000FF} /* visited link */
-#sidebar a:hover {color:#00CCCC; text-decoration: none;}   /* mouse over link */
+#sidebar a:hover {color:#808080; text-decoration: none;}   /* mouse over link */
 #sidebar a:active {color:#000000; text-decoration: none;}  /* selected link */
 
 #navigation a:link {color:#000000; text-decoration: none;}
-#navigation a:hover {color:	#484848; text-decoration: none;}
+#navigation a:hover {color:	#808080; text-decoration: none;}
