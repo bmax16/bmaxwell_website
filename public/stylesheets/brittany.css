@@ -35,6 +35,10 @@ body {
 	color:#808080;
 }
 
+#sidebartitle  h2 {
+    color:#808080
+}
+
 #sidebar a:link {color:#000000; text-decoration: none;}    /* unvisited link */
 #sidebar a:visited {color:#0000FF} /* visited link */
 #sidebar a:hover {color:#808080; text-decoration: none;}   /* mouse over link */

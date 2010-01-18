@@ -21,6 +21,6 @@ production:
   reconnect: false
   database: bmaxwell_website_prod
   pool: 5
-  username: root
-  password: 
-  host: localhost
+  username: brittany
+  password: moose16
+  host: mysql.brittanymaxwell.com
